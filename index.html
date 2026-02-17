@@ -43,6 +43,51 @@
             <div id="plotArea" class="plot-container"></div>
         </div>
         
+        <div class="walkthrough">
+            <h2>⚙️ Under the Hood</h2>
+            <p>How this project uses Unsupervised Learning to analyze player efficiency.</p>
+        
+            <details>
+                <summary><strong>Step 1: Data Collection (NBA API)</strong> - <i>Python & Pandas</i></summary>
+                <div class="code-block">
+                    <p>I utilized the <code>nba_api</code> endpoints to fetch career stats for over 4,500 players. To ensure data quality, I normalized stats to a "Per 75 Possessions" basis to compare eras fairly.</p>
+                    <pre><code>
+        # Fetching player logs
+        from nba_api.stats.endpoints import playercareerstats
+        
+        # Normalizing Data (Snippet)
+        def normalize_stats(df):
+            df['PTS_PER_75'] = (df['PTS'] / df['POSS']) * 75
+            return df
+                    </code></pre>
+                </div>
+            </details>
+        
+            <details>
+                <summary><strong>Step 2: The Math (Euclidean Distance)</strong> - <i>Scikit-Learn</i></summary>
+                <div class="code-block">
+                    <p>To find the "Nearest Neighbor," I treat every player as a vector in 12-dimensional space. We calculate the Euclidean distance between the target player vector ($p$) and every other player vector ($q$).</p>
+                    <div class="math-formula">
+                        d(p, q) = \sqrt{\sum_{i=1}^{n} (q_i - p_i)^2}
+                    </div>
+                    <p>Before calculation, all features are scaled using Standard Scaler ($z = \frac{x - \mu}{\sigma}$) to prevent high-volume stats (Points) from overpowering defensive metrics (Steals).</p>
+                </div>
+            </details>
+        
+            <details>
+                <summary><strong>Step 3: Unsupervised Learning (K-Means)</strong> - <i>Machine Learning</i></summary>
+                <div class="code-block">
+                    <p>I used the Elbow Method to determine that <strong>k=4</strong> was the optimal number of clusters for modern NBA archetypes.</p>
+                    <ul>
+                        <li>Cluster 0: Rotation Scorers</li>
+                        <li>Cluster 1: Deep Bench</li>
+                        <li>Cluster 2: Primary Stars</li>
+                        <li>Cluster 3: Big Men</li>
+                    </ul>
+                </div>
+            </details>
+        </div>
+
         <div id="loading" class="loading">Loading AI Models (approx 10s)...</div>
     </div>
 

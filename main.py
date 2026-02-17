@@ -1,3 +1,13 @@
+import warnings
+# Filter out the specific sklearn version warning
+warnings.filterwarnings("ignore", category=UserWarning, module='sklearn')
+# Also filter the specific InconsistentVersionWarning if available (safeguard)
+try:
+    from sklearn.exceptions import InconsistentVersionWarning
+    warnings.filterwarnings("ignore", category=InconsistentVersionWarning)
+except ImportError:
+    pass
+
 import pandas as pd
 import numpy as np
 import pickle
