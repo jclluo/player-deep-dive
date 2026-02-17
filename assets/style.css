@@ -1,0 +1,108 @@
+body {
+    background-color: #0f1014;
+    color: white;
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+}
+.container { max-width: 900px; margin: 0 auto; padding: 20px; }
+h1 { color: #ff4b4b; margin-bottom: 5px; }
+.search-box { margin: 30px 0; }
+input {
+    padding: 10px; border-radius: 5px; border: none; width: 60%;
+    background: #1e212b; color: white;
+}
+button {
+    padding: 10px 20px; background: #ff4b4b; color: white;
+    border: none; border-radius: 5px; cursor: pointer; font-weight: bold;
+}
+button:hover { background: #ff2a6d; }
+.dashboard { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 20px;}
+.metrics { flex: 1; display: flex; flex-direction: column; gap: 15px; min-width: 250px; }
+.card { background: #1e212b; padding: 20px; border-radius: 10px; border: 1px solid #333; }
+.card h2 { color: #00d4ff; margin: 5px 0; }
+.plot-container { flex: 2; min-width: 300px; display: flex; justify-content: center; align-items: center; }
+.loading { margin-top: 50px; color: #aaa; font-style: italic; animation: blink 1.5s infinite; }
+@keyframes blink { 50% { opacity: 0.5; } }
+
+/* --- WALKTHROUGH SECTION --- */
+.walkthrough {
+    text-align: left;
+    max-width: 800px;
+    margin: 4rem auto;
+    padding: 0 20px;
+}
+
+.walkthrough h2 {
+    text-align: center;
+    border-bottom: 2px solid #333;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+}
+
+/* Collapsible Details */
+details {
+    background: #1e212b;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 1px solid #333;
+    overflow: hidden;
+}
+
+summary {
+    padding: 15px;
+    cursor: pointer;
+    background: #2b3040;
+    font-weight: bold;
+    list-style: none; /* Hides default arrow */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+summary:hover {
+    background: #363c50;
+    color: #00d4ff;
+}
+
+summary::after {
+    content: '+'; 
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+details[open] summary::after {
+    content: '-';
+}
+
+/* Code Blocks */
+.code-block {
+    padding: 20px;
+    border-top: 1px solid #333;
+    background: #16181d;
+}
+
+pre {
+    background: #0d0f12;
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+    color: #a0a0a0;
+    font-family: 'Courier New', Courier, monospace;
+    border: 1px solid #333;
+}
+
+code {
+    color: #ff914d; /* Orange for code text */
+}
+
+.math-formula {
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 15px;
+    background: #0d0f12;
+    border: 1px solid #333;
+    margin: 10px 0;
+    color: #00d4ff;
+    font-family: 'Times New Roman', serif;
+    font-style: italic;
+}

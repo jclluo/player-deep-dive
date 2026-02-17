@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NBA DNA | Client-Side AI</title>
+    
+    <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
+    <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+    
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>🏀 NBA Player DNA</h1>
+            <p>Enter a historical player to find their modern statistical twin.</p>
+        </header>
+
+        <div class="search-box">
+            <input type="text" id="playerInput" placeholder="e.g. Kobe Bryant">
+            <button py-click="analyze_click">Analyze</button>
+        </div>
+
+        <div id="resultArea" class="dashboard">
+            <div class="metrics">
+                <div class="card">
+                    <h3>Archetype</h3>
+                    <h2 id="archetypeVal">--</h2>
+                </div>
+                <div class="card">
+                    <h3>Modern Twin</h3>
+                    <h2 id="matchVal">--</h2>
+                </div>
+                <div class="card">
+                    <h3>Similarity Score</h3>
+                    <h2 id="scoreVal">--</h2>
+                    <small>(Lower is better)</small>
+                </div>
+            </div>
+
+            <div id="plotArea" class="plot-container"></div>
+        </div>
+        
+        <div id="loading" class="loading">Loading AI Models (approx 10s)...</div>
+    </div>
+
+    <script type="py" src="./main.py" config="./pyscript.toml"></script>
+
+</body>
+</html>

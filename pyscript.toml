@@ -1,0 +1,16 @@
+name = "NBA Player DNA"
+description = "Find your NBA statistical doppelgänger."
+
+packages = [
+    "pandas",
+    "scikit-learn",
+    "matplotlib",
+    "numpy",
+    "scipy"
+]
+
+# This automatically fetches your model files and places them in the virtual filesystem
+[[fetch]]
+from = "model_data/"
+to_folder = "model_data"
+files = ["ml_df.pkl", "master_season_pergame_df.pkl", "scaler.pkl", "kmeans.pkl"]
